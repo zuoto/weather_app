@@ -31,6 +31,10 @@ a:hover {
   text-decoration: none;
 }
 
+#weatherDescription:first-letter {
+  text-transform: capitalize;
+}
+
 #firstRow {
   color: white;
   padding-top: 20px;
@@ -40,8 +44,8 @@ a:hover {
 
 #bigWeatherImage {
   width: 250px;
-  margin-top: -30px;
-  margin-right: 20px;
+  margin-top: -25px;
+  margin-right: 25px;
 }
 
 #weatherInfo {

@@ -94,6 +94,9 @@ function displayWeather(response) {
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
   let image = document.querySelector("#pic");
+  let weatherDescription = document.querySelector("#weatherDescription");
+
+  weatherDescription.innerHTML = response.data.weather[0].description;
 
   image.innerHTML = ` <img src="imgs2/${chooseIcon(
     response
