@@ -52,6 +52,15 @@ a:hover {
   text-align: left;
 }
 
+.units .active {
+  color: white;
+  cursor: default;
+}
+
+.units .active:hover {
+  text-decoration: none;
+}
+
 #weatherDetails {
   padding-top: 28px;
 }
