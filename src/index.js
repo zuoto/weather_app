@@ -31,7 +31,7 @@ function formatHours(timestamp) {
 function search(city) {
   let apiKey = "59a15f9eb2d8a3d337f3a6cafe49e480";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showWeather);
+  axios.get(apiUrl).then(displayWeather);
   console.log(apiUrl);
 }
 
@@ -88,24 +88,26 @@ function chooseIcon(response) {
   return icon;
 }
 
-function showWeather(response) {
+function displayWeather(response) {
   let cityElement = document.querySelector("#city");
   let temp = document.querySelector("#temp");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
-
   let image = document.querySelector("#pic");
 
   image.innerHTML = ` <img src="imgs2/${chooseIcon(
     response
   )}.svg" id="bigWeatherImage">`;
-  let dateElement = document.querySelector("#time");
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
 
   cityElement.innerHTML = response.data.name;
 
-  let temperature = Math.round(response.data.main.temp);
-  temp.innerHTML = `${temperature}°C`;
+  celsiusTemperature = response.data.main.temp;
+
+  let dateElement = document.querySelector("#time");
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  let temperature = Math.round(celsiusTemperature);
+  temp.innerHTML = `${temperature}`;
 
   let windDisp = Math.round(response.data.wind.speed);
   wind.innerHTML = `Wind: ${windDisp}m/s`;
@@ -114,16 +116,13 @@ function showWeather(response) {
   humidity.innerHTML = `Humidity: ${humidityDisp}%`;
 }
 
-let form = document.querySelector("form");
-form.addEventListener("submit", handleSubmit);
-
 function searchLocation(position) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   console.log(url);
-  axios.get(url).then(showWeather);
+  axios.get(url).then(displayWeather);
 }
 
 function getCurrentLocation(event) {
@@ -135,6 +134,30 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+
+function displayFahrenheit(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  let FahrenheitTemp = (celsiusTemperature * 9) / 5 + 32;
+  tempElement.innerHTML = Math.round(FahrenheitTemp);
+}
+
+function displayCelcius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp");
+  tempElement.innerHTML = Math.round(celsiusTemperature);
+}
+
+let celsiusTemperature = null;
+
+let celciusLink = document.querySelector("#celsius-link");
+celciusLink.addEventListener("click", displayCelcius);
+
+let FahrenheitLink = document.querySelector("#farenheit-link");
+FahrenheitLink.addEventListener("click", displayFahrenheit);
+
+let form = document.querySelector("form");
+form.addEventListener("submit", handleSubmit);
 
 let currentButton = document.querySelector("#current");
 currentButton.addEventListener("click", getCurrentLocation);
