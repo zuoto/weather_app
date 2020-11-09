@@ -32,6 +32,9 @@ function search(city) {
   let apiKey = "59a15f9eb2d8a3d337f3a6cafe49e480";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayWeather);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
   console.log(apiUrl);
 }
 
@@ -133,11 +136,6 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
-function getCurrentLocation(event) {
-  event.preventDefault();
-  navigator.geolocation.getCurrentPosition(searchLocation);
-}
-
 function displayFahrenheit(event) {
   event.preventDefault();
   celsiusLink.classList.remove("active");
@@ -155,6 +153,74 @@ function displayCelcius(event) {
   tempElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#nextDays");
+  forecastElement.innerHTML = null;
+  let forecast = null;
+  let iconForecast;
+
+  for (let index = 0; index < 5; index++) {
+    let weatherCondition = response.data.list[index].weather[0].main;
+
+    if (weatherCondition === "Clear") {
+      iconForecast = "004-sun";
+    }
+
+    if (weatherCondition === "Rain" || weatherCondition === "Squall") {
+      iconForecast = "008-heavy rain";
+    }
+
+    if (weatherCondition === "Snow") {
+      iconForecast = "011-snow";
+    }
+
+    if (weatherCondition === "Thunderstorm") {
+      iconForecast = "006-thunderstorm";
+    }
+
+    if (weatherCondition === "Clouds") {
+      iconForecast = "001-cloudy";
+    }
+
+    if (
+      weatherCondition === "Fog" ||
+      weatherCondition === "Mist" ||
+      weatherCondition === "Smoke" ||
+      weatherCondition === "Haze" ||
+      weatherCondition === "Dust" ||
+      weatherCondition === "Ash" ||
+      weatherCondition === "Sand"
+    ) {
+      iconForecast = "022-fog";
+    }
+
+    if (weatherCondition === "Tornado") {
+      iconForecast = "028-tornado";
+    }
+
+    if (weatherCondition === "Drizzle") {
+      iconForecast = "007-rain";
+    }
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += `
+    <div class="col">
+
+      <p>
+          ${formatHours(forecast.dt * 1000)}
+      </p>
+    
+      <img src="imgs2/${iconForecast}.svg" width="50px"/>
+
+       <br />
+
+        <p class="temp">
+          ${Math.round(forecast.main.temp_max)}°C
+         </p>
+    
+     </div>
+  `;
+  }
+}
 let celsiusTemperature = null;
 
 let celsiusLink = document.querySelector("#celsius-link");
