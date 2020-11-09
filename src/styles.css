@@ -1,10 +1,9 @@
-h1,
-p,
-button {
-  text-align: center;
-  font-family: "Bebas Neue", cursive;
-  color: #19a2b8;
+.btn,
+sumbit {
+  background-color: #29cbe8;
+  border: none;
 }
+
 p {
   font-size: 17px;
 }
@@ -14,28 +13,87 @@ img {
   margin: 0 auto;
 }
 
+ul {
+  padding-left: 0;
+  font-size: 17px;
+}
+
+li {
+  list-style: none;
+}
+
 form {
   margin-bottom: 20px;
+  margin-top: 20px;
 }
+
+#firstRow {
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  padding-left: 20px;
+}
+
+#bigWeatherImage {
+  width: 250px;
+  margin-top: -30px;
+  margin-right: 20px;
+}
+
+#weatherInfo {
+  text-align: left;
+}
+
+#weatherDetails {
+  padding-top: 28px;
+}
+#nextDays {
+  text-align: center;
+  color: #19a2b8;
+}
+
+#openSource {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 30px;
+  color: #19a2b8;
+}
+
 .container {
-  width: 800px;
-}
-.temp {
-  font-weight: bold;
-  font-size: 20px;
+  max-width: 800px;
 }
 
 .card {
+  word-wrap: normal;
+  padding: 30px;
   margin-top: 50px;
-  margin-bottom: 50px;
-  border: 1px solid #e8df3d;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 20px;
+
+  background: #29cbe8;
+  background: -moz-linear-gradient(
+    top,
+    #29cbe8 0%,
+    #bfe8f9 51%,
+    #e4f5fc 91%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    #29cbe8 0%,
+    #bfe8f9 51%,
+    #e4f5fc 91%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    #29cbe8 0%,
+    #bfe8f9 51%,
+    #e4f5fc 91%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#29cbe8', endColorstr='#e4f5fc',GradientType=0 ); /* IE6-9 */
 }
 
-.next-days {
-  padding: 1px;
-}
-
-.time {
-  margin-top: 0;
-  margin-bottom: 0;
+.temp {
+  font-weight: bold;
+  font-size: 20px;
 }

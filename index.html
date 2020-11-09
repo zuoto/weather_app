@@ -9,172 +9,199 @@
         integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous" />
     <link rel="stylesheet" href="src/styles.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
+       
         <div class="card">
             <div class="card-body">
 
-                <h1 id="city">
-                    Tokyo
-                </h1>
-                <p class="time"> </p>
-                <h1 id="temp">
-                    <b>
-                        18°C
-                    </b>
 
-                </h1>
+                
+                <div class="row" id="firstRow">
+                    
 
-                <br />
+                    
+                 
+                    <div class="col-5" id="weatherInfo">
+                     <ul>
+                        <li id="time">
+                         </li>
+                       <li> 
+                           <h1 id="city">
+                             Tokyo
+                            </h1>
+                        </li>
 
-                <img src="imgs/004-cloudy-5.svg" width="50%" />
 
-                <br />
-                <br />
-
-                <div class="row">
-                    <div class="col">
-                        <p id="precipitation">
-                            Precipitation: 59%
-                        </p>
+                        <li>
+                            <h1>
+                                <b>
+                                    <span id="temp">
+                                        18°C
+                                    </span>
+                                </b>
+                            </h1>
+                        </li>
+    
+    
+                            <li id="wind">
+                                Wind: 3m/s
+                            </li>
+                            
+                            <li id="humidity">
+                                Humidity: 87%
+                            </li>
+                            
+                        </ul>
+                 
                     </div>
 
-                    <div class="col">
-                        <p id="wind">
-                            Wind: 3m/s
-                        </p>
+                    
+                    <div class="col-7" id="pic">
+                        <img src="imgs2/007-rain.svg" id="bigWeatherImage">
                     </div>
-
-                    <div class="col">
-                        <p id="humidity">
-                            Humidity: 87%
-                        </p>
-                    </div>
-
+    
                 </div>
-
-
-
-                <div class="row">
+    
+    
+    
+                <div class="row" id="nextDays">
+                   
                     <div class="col">
-                        <div class="card">
-                            <div class="card-body">
 
-                                <p>
-                                    Monday
-                                </p>
+                        <p>
+                            Monday
+                        </p>
+    
+                        <img src="imgs2/003-clouds and sun.svg" width="50px"/>
 
-                                <img src="imgs/013-sun.svg" />
-                                <br />
-                                <p class="temp">
-                                    18°C
-                                </p>
+                        <br />
 
-                            </div>
-                        </div>
+                        <p class="temp">
+                            18°C
+                        </p>
+    
+                    </div>
+    
+    
+                    <div class="col">
+    
+                        <p>
+                            Tuesday
+                        </p>
+    
+                        <img src="imgs2/010-rain.svg" width="50px" />
+
+                        <br />
+
+                        <p class="temp">
+                            18°C
+                        </p>
+
+                    </div>
+    
+
+                    <div class="col">
+    
+                        <p>
+                            Wednesday
+                        </p>
+    
+                        <img src="imgs2/013-wind.svg" width="50px" />
+
+                        <br />
+
+                        <p class="temp">
+                            18°C
+                        </p>
+
+                    </div>
+    
+    
+                    <div class="col">
+
+                        <p>
+                            Thursday
+                        </p>
+    
+                        <img src="imgs2/008-heavy rain.svg"width="50px" />
+
+                        <br />
+
+                        <p class="temp">
+                            18°C
+                        </p>
+    
+                    </div>
+    
+
+                    <div class="col">
+    
+                        <p>
+                            Friday
+                        </p>
+    
+                        <img src="imgs2/006-thunderstorm.svg" width="50px"/>
+
+                        <br />
+
+                        <p class="temp">
+                            18°C
+                        </p>
+    
                     </div>
 
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-
-                                <p>
-                                    Tuesday
-                                </p>
-
-                                <img src="imgs/023-clouds-1.svg" />
-                                <br />
-                                <p class="temp">
-                                    18°C
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-
-                                <p>
-                                    Wednesday
-                                </p>
-
-                                <img src="imgs/034-weather-1.svg" />
-                                <br />
-                                <p class="temp">
-                                    18°C
-                                </p>
-
-                            </div>
-                        </div>
-                    </div>
-                    <table>
-
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-
-                                    <p>
-                                        Thursday
-                                    </p>
-
-                                    <img src="imgs/004-cloudy-5.svg" />
-                                    <br />
-                                    <p class="temp">
-                                        18°C
-                                    </p>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card">
-                                <div class="card-body">
-
-                                    <p>
-                                        Friday
-                                    </p>
-
-                                    <img src="imgs/042-rain.svg" />
-                                    <br />
-                                    <p class="temp">
-                                        18°C
-                                    </p>
-
-                                </div>
-                            </div>
-                    </table>
                 </div>
 
 
 
                 <form>
+
                     <div class="row">
-                        <div class="col-8">
-                            <input Type="text" class="form-control" id="cityTyped"
-                                placeholder="Want to check someplace else? Type here...">
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-info">Go!</button>
-                        </div>
-                        <div class="col">
-                            <button type="button" class="btn btn-info" id="current">Current</button>
+
+                        <div class="col-9">
+
+                            <input Type="search" class="form-control" id="cityTyped" autocomplete="off"
+                                placeholder="Type a city...">
+
                         </div>
 
+                        <div class="col-1">
+
+                            <button type="submit" class="btn btn-info">
+                                Go!
+                            </button>
+
+                        </div>
+
+                        <div class="col-2">
+
+                            <button type="button" class="btn btn-info" id="current">
+                                Current
+                            </button>
+
+                        </div>
+                    
                 </form>
-            </div>
 
+            </div> 
         </div>
-    </div>
-    <p> <a href="https://github.com/zuoto/weather_app">Open-source</a> by Natalia Zlotkowska</p>
+
     </div>
 
-    <script src="src/index.js"></script>
+    <p id=openSource> 
+        <a href="https://github.com/zuoto/weather_app">
+            Open-source
+        </a> 
+        by Natalia Zlotkowska
+    </p>
+
+ </div>
+
+ <script src="src/index.js"></script>
+
 </body>
 
 </html>
