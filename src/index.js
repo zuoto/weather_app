@@ -138,3 +138,5 @@ function getCurrentLocation(event) {
 
 let currentButton = document.querySelector("#current");
 currentButton.addEventListener("click", getCurrentLocation);
+
+search("Seoul");
