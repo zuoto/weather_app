@@ -91,13 +91,11 @@ function chooseIcon(response) {
 function showWeather(response) {
   let cityElement = document.querySelector("#city");
   let temp = document.querySelector("#temp");
-  let precipitations = document.querySelector("#precipitation");
   let wind = document.querySelector("#wind");
   let humidity = document.querySelector("#humidity");
 
   let image = document.querySelector("#pic");
 
-  let weatherCondition = response.data.weather[0].main;
   image.innerHTML = ` <img src="imgs2/${chooseIcon(
     response
   )}.svg" id="bigWeatherImage">`;
@@ -119,38 +117,24 @@ function showWeather(response) {
 let form = document.querySelector("form");
 form.addEventListener("submit", handleSubmit);
 
-function currentButtonClicked(position) {
+function searchLocation(position) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let lat = position.coords.latitude;
   let lon = position.coords.longitude;
   let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`;
   console.log(url);
-  axios.get(url).then(currentWeather);
+  axios.get(url).then(showWeather);
 }
-function currentWeather(response) {
-  let temp = document.querySelector("#temp");
-  let dateElement = document.querySelector("#time");
 
-  let wind = document.querySelector("#wind");
-  let humidity = document.querySelector("#humidity");
-  let temperature = Math.round(response.data.main.temp);
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
+}
 
-  temp.innerHTML = `${temperature}°C`;
-
-  dateElement.innerHTML = formatDate(response.data.dt * 1000);
-
-  let windDisp = Math.round(response.data.wind.speed);
-  wind.innerHTML = `Wind: ${windDisp} m/s`;
-
-  let humidityDisp = Math.round(response.data.main.humidity);
-  humidity.innerHTML = `Humidity: ${humidityDisp}%`;
-
-  let city = document.querySelector("#city");
-  city.innerHTML = response.data.name;
+function getCurrentLocation(event) {
+  event.preventDefault();
+  navigator.geolocation.getCurrentPosition(searchLocation);
 }
 
 let currentButton = document.querySelector("#current");
-currentButton.addEventListener(
-  "click",
-  navigator.geolocation.getCurrentPosition(currentButtonClicked)
-);
+currentButton.addEventListener("click", getCurrentLocation);
